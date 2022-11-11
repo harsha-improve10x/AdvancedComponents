@@ -2,6 +2,7 @@ package com.example.advancedcomponents;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,8 +13,10 @@ public class MainActivity extends AppCompatActivity {
     Button dateOfBirth;
     Button team;
     Button teamList;
+    Button contacts;
     Button addMember;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         dateOfBirth = findViewById(R.id.date_of_birth_btn);
         team = findViewById(R.id.team_btn);
         teamList = findViewById(R.id.team_list_btn);
+        contacts = findViewById(R.id.contacts_button_btn);
         addMember = findViewById(R.id.addMember_btn);
         setLuckyNumberBtn();
         setLocationBtn();
         setDateOfBirth();
         setTeam();
         setTeamList();
+        setContacts();
         setAddMembers();
     }
 
@@ -64,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
     public void setTeamList() {
         teamList.setOnClickListener(view -> {
             Intent intent = new Intent(this, TeamListActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    public void setContacts() {
+        contacts.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ContactsListActivity.class);
             startActivity(intent);
         });
     }

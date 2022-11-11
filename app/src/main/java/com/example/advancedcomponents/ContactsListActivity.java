@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ContactsListActivity extends AppCompatActivity {
     public ArrayList<Contacts> contacts;
     public ListView contactsLv;
-    ArrayAdapter<Contacts> arrayAdapter;
+    ContactAdapter contactAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,16 @@ public class ContactsListActivity extends AppCompatActivity {
         renu.name = "Renuka";
         renu.phoneNumber = "+91 9886655979";
         contacts.add(renu);
+
+        Contacts harsha = new Contacts();
+        harsha.name = "ShreeHarsha A";
+        harsha.phoneNumber = "+91 6363396453";
+        contacts.add(harsha);
     }
 
     public void setContactsLv() {
         contactsLv = findViewById(R.id.contacts_lv);
-        arrayAdapter = new ArrayAdapter<Contacts>(
-                this, R.layout.contact_list_view_item, contacts);
+         contactAdapter = new ContactAdapter(this,R.layout.contact_list_view_item,contacts);
+         contactsLv.setAdapter(contactAdapter);
     }
 }
